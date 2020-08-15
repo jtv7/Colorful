@@ -8,14 +8,14 @@ interface ThemeColorInterface {
 
     companion object {
         fun parse(data: String): ThemeColorInterface {
-            var color: ThemeColorInterface
-            if (data.contains("|")) {
-                var nameParts = data.split("|")
+            val color: ThemeColorInterface
+            color = if (data.contains("|")) {
+                val nameParts = data.split("|")
                 if (nameParts.size != 4)
                     return ThemeColor.GREEN
-                color = CustomThemeColor(nameParts[0].toInt(), nameParts[1].toInt(), nameParts[2], nameParts[3])
+                CustomThemeColor(nameParts[0].toInt(), nameParts[1].toInt(), nameParts[2], nameParts[3])
             } else {
-                color = ThemeColor.valueOf(data)
+                ThemeColor.valueOf(data)
             }
             return color
         }

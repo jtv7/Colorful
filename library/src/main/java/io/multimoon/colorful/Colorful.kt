@@ -26,8 +26,8 @@ fun initColorful(app: Application, defaults: Defaults = Defaults(ThemeColor.INDI
     val time: Long = System.currentTimeMillis()
     val prefs = app.getSharedPreferences(ThemeEditor.PREF_NAME, Context.MODE_PRIVATE)
 
-    var primary: ThemeColorInterface = ThemeColorInterface.parse(prefs.getString(primaryThemeKey, defaults.primaryColor.themeName))
-    var accent: ThemeColorInterface = ThemeColorInterface.parse(prefs.getString(accentThemeKey, defaults.accentColor.themeName))
+    val primary: ThemeColorInterface = ThemeColorInterface.parse(prefs.getString(primaryThemeKey, defaults.primaryColor.themeName).orEmpty())
+    val accent: ThemeColorInterface = ThemeColorInterface.parse(prefs.getString(accentThemeKey, defaults.accentColor.themeName).orEmpty())
 
     mInstance = ColorfulDelegate(
             primary,
